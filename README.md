@@ -15,10 +15,9 @@
 <img src="./readmeassets/readme10.png" width="200" height="400">
 </p>
 
-![Android and iOs](./readmeassets/indev.png)
+# Android and iOs
 
 https://user-images.githubusercontent.com/50278666/193158352-17cf6d65-cf4e-46cd-8cd8-ab5454124b20.mp4
-
 
 # This app does not use Expo runs natively on respective device.
 
