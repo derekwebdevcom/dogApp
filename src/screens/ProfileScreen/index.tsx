@@ -1,5 +1,5 @@
-import * as React from 'react';
-import {FC} from 'react';
+import * as React from "react";
+import { FC } from "react";
 import {
   StyleSheet,
   Text,
@@ -10,21 +10,24 @@ import {
   Platform,
   StatusBar,
   Alert,
-} from 'react-native';
-import LinearGradient from 'react-native-linear-gradient';
-import {globalColors, globalEnums, globalStrings} from '../../global';
-import Feather from 'react-native-vector-icons/Feather';
-import Ionicons from 'react-native-vector-icons/Ionicons';
-import AntDesign from 'react-native-vector-icons/AntDesign';
-import Entypo from 'react-native-vector-icons/Entypo';
-import {useNavigation} from '@react-navigation/native';
-import {NativeStackNavigationProp} from '@react-navigation/native-stack';
-import {Routes} from '../../navigation';
-import WebView from 'react-native-webview';
+  Dimensions,
+} from "react-native";
+import LinearGradient from "react-native-linear-gradient";
+import { globalColors, globalEnums, globalStrings } from "../../global";
+import Feather from "react-native-vector-icons/Feather";
+import Ionicons from "react-native-vector-icons/Ionicons";
+import AntDesign from "react-native-vector-icons/AntDesign";
+import Entypo from "react-native-vector-icons/Entypo";
+import { useNavigation } from "@react-navigation/native";
+import { NativeStackNavigationProp } from "@react-navigation/native-stack";
+import { Routes } from "../../navigation";
+import WebView from "react-native-webview";
+
+const { height } = Dimensions.get("window");
 
 export const ProfileScreen: FC = () => {
-  const avatar = require('../../assets/derekwebdevlogon.png');
-  const doggy = require('../../assets/profileDog.jpg');
+  const avatar = require("../../assets/derekwebdevlogon.png");
+  const doggy = require("../../assets/profileDog.jpg");
   const navigation = useNavigation<NativeStackNavigationProp<Routes>>();
 
   const emailAction = () => {
@@ -48,7 +51,7 @@ export const ProfileScreen: FC = () => {
   };
 
   const viewResumeAction = () => {
-    navigation.navigate('webViewScreen');
+    navigation.navigate("webViewScreen");
   };
 
   const textAction = () => {
@@ -59,19 +62,21 @@ export const ProfileScreen: FC = () => {
   return (
     <View style={styles.container}>
       <StatusBar hidden />
-      <Text style={styles.profileText}>{globalStrings.profile}</Text>
-      <Image source={avatar} style={styles.avatar} />
-      <Text style={styles.userName}>{globalStrings.author}</Text>
+      <View style={styles.avatarContainer}>
+        <Text style={styles.profileText}>{globalStrings.profile}</Text>
+        <Image source={avatar} style={styles.avatar} />
+        <Text style={styles.userName}>{globalStrings.author}</Text>
+      </View>
       <WebView
         javaScriptEnabled={true}
         domStorageEnabled={true}
-        source={{uri: globalStrings.spiral}}
+        source={{ uri: globalStrings.spiral }}
         style={styles.webView}
-        onError={event =>
+        onError={(event) =>
           Alert.alert(
             globalStrings.webviewError +
               `: ` +
-              `${event.nativeEvent.description}`,
+              `${event.nativeEvent.description}`
           )
         }
       />
@@ -81,12 +86,14 @@ export const ProfileScreen: FC = () => {
           globalColors.shadowBackgroundPink,
           globalColors.shadowBackgroundPink,
         ]}
-        style={styles.linearGradient}>
+        style={styles.linearGradient}
+      >
         <View style={styles.informationContainer}>
           <Text style={styles.information}>{globalStrings.emailAddress}</Text>
           <Pressable
             onPress={emailAction}
-            style={({pressed}) => [{opacity: pressed ? 0.5 : 1.0}]}>
+            style={({ pressed }) => [{ opacity: pressed ? 0.5 : 1.0 }]}
+          >
             <Feather
               name={globalEnums.mail}
               color={globalColors.paletteLightText}
@@ -102,12 +109,14 @@ export const ProfileScreen: FC = () => {
           globalColors.shadowBackgroundPink,
           globalColors.shadowBackgroundPink,
         ]}
-        style={styles.linearGradient}>
+        style={styles.linearGradient}
+      >
         <View style={styles.informationContainer}>
           <Text style={styles.information}>{globalStrings.browserUrlFull}</Text>
           <Pressable
             onPress={openUrlAction}
-            style={({pressed}) => [{opacity: pressed ? 0.5 : 1.0}]}>
+            style={({ pressed }) => [{ opacity: pressed ? 0.5 : 1.0 }]}
+          >
             <Feather
               name={globalEnums.externalLink}
               color={globalColors.paletteLightText}
@@ -123,12 +132,14 @@ export const ProfileScreen: FC = () => {
           globalColors.shadowBackgroundPink,
           globalColors.shadowBackgroundPink,
         ]}
-        style={styles.linearGradient}>
+        style={styles.linearGradient}
+      >
         <View style={styles.informationContainer}>
           <Text style={styles.information}>{globalStrings.linkedInShort}</Text>
           <Pressable
             onPress={linkedInAction}
-            style={({pressed}) => [{opacity: pressed ? 0.5 : 1.0}]}>
+            style={({ pressed }) => [{ opacity: pressed ? 0.5 : 1.0 }]}
+          >
             <AntDesign
               name={globalEnums.linkedIn}
               color={globalColors.paletteLightText}
@@ -144,12 +155,14 @@ export const ProfileScreen: FC = () => {
           globalColors.shadowBackgroundPink,
           globalColors.shadowBackgroundPink,
         ]}
-        style={styles.linearGradient}>
+        style={styles.linearGradient}
+      >
         <View style={styles.informationContainer}>
           <Text style={styles.information}>{globalStrings.privacyNumber}</Text>
           <Pressable
             onPress={phoneCallAction}
-            style={({pressed}) => [{opacity: pressed ? 0.5 : 1.0}]}>
+            style={({ pressed }) => [{ opacity: pressed ? 0.5 : 1.0 }]}
+          >
             <Ionicons
               name={globalEnums.phone}
               color={globalColors.paletteLightText}
@@ -159,19 +172,21 @@ export const ProfileScreen: FC = () => {
           </Pressable>
         </View>
       </LinearGradient>
-      {Platform.OS === 'ios' ? (
+      {Platform.OS === "ios" ? (
         <LinearGradient
           colors={[
             globalColors.palettePink,
             globalColors.shadowBackgroundPink,
             globalColors.shadowBackgroundPink,
           ]}
-          style={styles.linearGradient}>
+          style={styles.linearGradient}
+        >
           <View style={styles.informationContainer}>
             <Text style={styles.information}>{globalStrings.viewResume}</Text>
             <Pressable
               onPress={viewResumeAction}
-              style={({pressed}) => [{opacity: pressed ? 0.5 : 1.0}]}>
+              style={({ pressed }) => [{ opacity: pressed ? 0.5 : 1.0 }]}
+            >
               <Entypo
                 name={globalEnums.eye}
                 color={globalColors.paletteLightText}
@@ -188,12 +203,14 @@ export const ProfileScreen: FC = () => {
           globalColors.shadowBackgroundPink,
           globalColors.shadowBackgroundPink,
         ]}
-        style={styles.linearGradient}>
+        style={styles.linearGradient}
+      >
         <View style={styles.informationContainer}>
           <Text style={styles.information}>{globalStrings.text}</Text>
           <Pressable
             onPress={textAction}
-            style={({pressed}) => [{opacity: pressed ? 0.5 : 1.0}]}>
+            style={({ pressed }) => [{ opacity: pressed ? 0.5 : 1.0 }]}
+          >
             <Feather
               name={globalEnums.smartphone}
               color={globalColors.paletteLightText}
@@ -213,25 +230,32 @@ export const ProfileScreen: FC = () => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: 'transparent',
+    backgroundColor: "transparent",
+  },
+  avatarContainer: {
+    position: "absolute",
+    top: Platform.OS === "ios" ? "10%" : "20%",
+    left: "30%",
+    width: "40%",
+    zIndex: 2,
   },
   profileDogContainer: {
     backgroundColor: globalColors.shadowBackground,
   },
   webView: {
-    position: 'absolute',
+    position: "absolute",
     top: 0,
     left: 0,
     right: 0,
     bottom: 0,
-    justifyContent: 'center',
-    alignItems: 'center',
+    justifyContent: "center",
+    alignItems: "center",
   },
   doggy: {
     paddingBottom: 10,
     height: 100,
     zIndex: -1,
-    width: '100%',
+    width: "100%",
   },
   margin: {
     marginTop: 15,
@@ -241,35 +265,23 @@ const styles = StyleSheet.create({
   avatar: {
     height: 100,
     width: 100,
-    resizeMode: 'contain',
-    position: 'absolute',
-    top: Platform.OS === 'ios' ? '14%' : 125,
-    left: Platform.OS === 'ios' ? '38%' : 155,
-    right: 0,
-    bottom: 0,
-    justifyContent: 'center',
-    alignItems: 'center',
+    resizeMode: "contain",
+    marginLeft: "auto",
+    marginRight: "auto",
     zIndex: 1,
   },
   userName: {
-    textAlign: 'center',
-    position: 'absolute',
-    top: Platform.OS === 'ios' ? '32%' : 275,
-    left: 10,
-    right: 0,
-    bottom: 0,
-    justifyContent: 'center',
-    alignItems: 'center',
+    textAlign: "center",
     zIndex: 1,
-    fontWeight: 'bold',
+    fontWeight: "bold",
     fontSize: 24,
     color: globalColors.paletteLightText,
   },
   informationContainer: {
-    backgroundColor: 'transparent',
-    justifyContent: 'space-between',
-    alignItems: 'center',
-    flexDirection: 'row',
+    backgroundColor: "transparent",
+    justifyContent: "space-between",
+    alignItems: "center",
+    flexDirection: "row",
     marginLeft: 20,
     marginRight: 35,
   },
@@ -277,22 +289,17 @@ const styles = StyleSheet.create({
     color: globalColors.paletteLightText,
     fontSize: 16,
     marginTop: 15,
-    fontWeight: 'bold',
+    fontWeight: "bold",
   },
   linearGradient: {
     height: 60,
     zIndex: 2,
   },
   profileText: {
-    fontWeight: 'bold',
+    fontWeight: "bold",
     fontSize: 28,
     color: globalColors.paletteLightText,
-    position: 'absolute',
-    top: Platform.OS === 'ios' ? '8%' : 60,
-    left: Platform.OS === 'ios' ? '38%' : 160,
-    alignSelf: 'center',
-    right: 0,
-    bottom: 0,
+    alignSelf: "center",
     zIndex: 1,
   },
 });

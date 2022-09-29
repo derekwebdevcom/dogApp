@@ -3,8 +3,16 @@
 # Dog API App. React Native Mobile Client, Typescript, Custom Hooks, Web View, Camera and Read/Write Storage Permissions. iOs + Android
 
 <p align="middle">
-<img src="./readmeassets/splashscreen.png" width="200" height="400">
-<img src="./readmeassets/registerscreen.png" width="200" height="400">
+<img src="./readmeassets/readme1.png" width="200" height="400">
+<img src="./readmeassets/readme2.png" width="200" height="400">
+<img src="./readmeassets/readme3.png" width="200" height="400">
+<img src="./readmeassets/readme4.png" width="200" height="400">
+<img src="./readmeassets/readme5.png" width="200" height="400">
+<img src="./readmeassets/readme6.png" width="200" height="400">
+<img src="./readmeassets/readme7.png" width="200" height="400">
+<img src="./readmeassets/readme8.png" width="200" height="400">
+<img src="./readmeassets/readme9.png" width="200" height="400">
+<img src="./readmeassets/readme10.png" width="200" height="400">
 </p>
 
 ![Final App](./readmeassets/indev.png)
