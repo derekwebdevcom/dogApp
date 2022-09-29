@@ -1,4 +1,4 @@
-import * as React from 'react';
+import * as React from "react";
 import {
   FlatList,
   StyleSheet,
@@ -11,41 +11,40 @@ import {
   Alert,
   GestureResponderEvent,
   StatusBar,
-} from 'react-native';
-import {useState, FC, useEffect, useRef, useCallback} from 'react';
-import {useFetchData} from '../../hooks';
-import {Button, Header, Modal} from '../../components';
-import {globalColors, globalEnums, globalStrings} from '../../global';
-import LinearGradient from 'react-native-linear-gradient';
-import AntDesign from 'react-native-vector-icons/AntDesign';
-import Feather from 'react-native-vector-icons/Feather';
-import {useNavigation} from '@react-navigation/native';
-import {NativeStackNavigationProp} from '@react-navigation/native-stack';
-import {Routes} from '../../navigation';
+} from "react-native";
+import { useState, FC, useEffect, useRef, useCallback } from "react";
+import { useFetchData } from "../../hooks";
+import { Button, Header, Modal } from "../../components";
+import { globalColors, globalEnums, globalStrings } from "../../global";
+import LinearGradient from "react-native-linear-gradient";
+import AntDesign from "react-native-vector-icons/AntDesign";
+import Feather from "react-native-vector-icons/Feather";
+import { useNavigation } from "@react-navigation/native";
+import { NativeStackNavigationProp } from "@react-navigation/native-stack";
+import { Routes } from "../../navigation";
 
 interface DashBoardProps {
   viewImage?: (event: GestureResponderEvent) => void;
 }
 
 export const DashboardScreen: FC<DashBoardProps> = () => {
-  const manWithDog = require('../../assets/dogfeeding.jpg');
+  const manWithDog = require("../../assets/dogfeeding.jpg");
   const [data, isLoading, dataError] = useFetchData(globalStrings.allBreeds);
   const [selected, setSelected] = useState<string>(globalStrings.emptyString);
   const [url, setUrl] = useState(globalStrings.imageUrl);
   const imagesList = useFetchData(url);
   const [showBreeds, setShowBreeds] = useState<boolean>(false);
   const [modalVisible, setModalVisible] = useState<boolean>(false);
-  const [search, setSearch] = useState<string>(globalStrings.emptyString);
   const [viewImageButton, setViewImageButton] = useState<boolean>(false);
   const ref = useRef<FlatList>(null);
   const navigation = useNavigation<NativeStackNavigationProp<Routes>>();
   const [listKeys, setListKeys] = useState([]);
   const [blur, setBlur] = useState<number>(0);
   const [buttonLabel, setButtonLabel] = useState<string>(
-    globalStrings.showBreeds,
+    globalStrings.showBreeds
   );
   const [dogModalLabel, setDogModalLabel] = useState<string>(
-    globalStrings.emptyString,
+    globalStrings.emptyString
   );
 
   useEffect(() => {
@@ -57,7 +56,7 @@ export const DashboardScreen: FC<DashBoardProps> = () => {
       }
     }
     if (selected) {
-      const template = globalStrings.imageUrl.replace('selected', selected);
+      const template = globalStrings.imageUrl.replace("selected", selected);
       setUrl(template);
     }
     return () => {
@@ -66,7 +65,7 @@ export const DashboardScreen: FC<DashBoardProps> = () => {
   }, [data, selected, url]);
 
   const goBack = () => {
-    navigation.navigate('welcomeScreen');
+    navigation.navigate("welcomeScreen");
   };
 
   const buttonAction = () => {
@@ -86,14 +85,14 @@ export const DashboardScreen: FC<DashBoardProps> = () => {
     if (format.test(value)) {
       Alert.alert(globalStrings.alertWarning);
     }
-    const newData = listKeys.filter(item => {
-      const itemData = item ? item?.toUpperCase() : ''.toUpperCase();
+    const newData = listKeys.filter((item) => {
+      const itemData = item ? item?.toUpperCase() : "".toUpperCase();
       const textData = value.toUpperCase();
       return itemData.indexOf(textData) > -1;
     });
     const filterText = listKeys.indexOf(
       newData?.toString().toLowerCase() as never,
-      0,
+      0
     );
     setShowBreeds(true);
     if (value.length == 0) {
@@ -132,7 +131,8 @@ export const DashboardScreen: FC<DashBoardProps> = () => {
       <ImageBackground
         style={styles.manWithDog}
         source={manWithDog}
-        blurRadius={blur}>
+        blurRadius={blur}
+      >
         <View style={styles.searchView}>
           <TextInput
             autoCorrect={false}
@@ -172,13 +172,13 @@ export const DashboardScreen: FC<DashBoardProps> = () => {
               removeClippedSubviews
               ref={ref}
               keyExtractor={(item, index) => index.toString()}
-              onScrollToIndexFailed={({index, averageItemLength}) => {
+              onScrollToIndexFailed={({ index, averageItemLength }) => {
                 ref.current?.scrollToOffset({
                   offset: index * averageItemLength,
                   animated: true,
                 });
               }}
-              renderItem={({item, index}) => (
+              renderItem={({ item, index }) => (
                 <Pressable
                   onPress={() => {
                     setSelected(item);
@@ -186,14 +186,16 @@ export const DashboardScreen: FC<DashBoardProps> = () => {
                     setViewImageButton(true);
                     viewImage(index);
                   }}
-                  style={({pressed}) => [{opacity: pressed ? 0.5 : 1.0}]}>
+                  style={({ pressed }) => [{ opacity: pressed ? 0.5 : 1.0 }]}
+                >
                   <LinearGradient
                     colors={[
                       globalColors.paletteLight,
                       globalColors.palettePink,
                       globalColors.palettePink,
                     ]}
-                    style={styles.linearGradient}>
+                    style={styles.linearGradient}
+                  >
                     <View style={styles.listItem}>
                       {viewImageButton && item === selected ? (
                         <Pressable style={styles.cameraIcon}>
@@ -239,19 +241,19 @@ const styles = StyleSheet.create({
     marginTop: 50,
   },
   activityIndicator: {
-    marginTop: '50%',
+    marginTop: "50%",
   },
   goBack: {
     marginTop: 10,
-    marginLeft: 'auto',
-    marginRight: 'auto',
+    marginLeft: "auto",
+    marginRight: "auto",
   },
   container: {
     flex: 1,
   },
   cameraIcon: {
     marginTop: 12,
-    marginLeft: '10%',
+    marginLeft: "10%",
   },
   linearGradient: {
     height: 50,
@@ -261,24 +263,24 @@ const styles = StyleSheet.create({
     marginLeft: 20,
   },
   errorMessage: {
-    textAlign: 'center',
+    textAlign: "center",
     fontSize: 20,
     color: globalColors.paletteLightText,
-    fontWeight: 'bold',
+    fontWeight: "bold",
   },
   manWithDog: {
-    width: '100%',
-    height: '100%',
+    width: "100%",
+    height: "100%",
   },
   searchView: {
     marginTop: 30,
-    marginLeft: 'auto',
-    marginRight: 'auto',
-    flexDirection: 'row',
+    marginLeft: "auto",
+    marginRight: "auto",
+    flexDirection: "row",
   },
   listItem: {
-    flexDirection: 'row-reverse',
-    justifyContent: 'flex-end',
+    flexDirection: "row-reverse",
+    justifyContent: "flex-end",
   },
   textInput: {
     backgroundColor: globalColors.palettePink,
@@ -286,16 +288,16 @@ const styles = StyleSheet.create({
     width: 165,
     height: 40,
     borderRadius: 10,
-    textAlign: 'center',
+    textAlign: "center",
     marginRight: 10,
     color: globalColors.paletteLightText,
-    fontWeight: 'bold',
+    fontWeight: "bold",
   },
   itemText: {
     marginTop: 12,
     fontSize: 16,
     color: globalColors.paletteLightText,
-    fontWeight: 'bold',
+    fontWeight: "bold",
     marginLeft: 15,
   },
 });

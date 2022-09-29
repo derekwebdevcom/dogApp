@@ -10,7 +10,6 @@ import {
   Platform,
   StatusBar,
   Alert,
-  Dimensions,
 } from "react-native";
 import LinearGradient from "react-native-linear-gradient";
 import { globalColors, globalEnums, globalStrings } from "../../global";
@@ -22,8 +21,6 @@ import { useNavigation } from "@react-navigation/native";
 import { NativeStackNavigationProp } from "@react-navigation/native-stack";
 import { Routes } from "../../navigation";
 import WebView from "react-native-webview";
-
-const { height } = Dimensions.get("window");
 
 export const ProfileScreen: FC = () => {
   const avatar = require("../../assets/derekwebdevlogon.png");
