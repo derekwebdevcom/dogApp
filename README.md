@@ -13,6 +13,7 @@
 <img src="./readmeassets/readme8.png" width="200" height="400">
 <img src="./readmeassets/readme9.png" width="200" height="400">
 <img src="./readmeassets/readme10.png" width="200" height="400">
+<video>
 </p>
 
 ![Final App](./readmeassets/indev.png)
