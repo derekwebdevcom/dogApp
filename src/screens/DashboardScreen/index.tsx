@@ -125,7 +125,7 @@ export const DashboardScreen: FC<DashBoardProps> = () => {
   };
 
   return (
-    <View style={styles.container}>
+    <View style={styles.container} testID={"dashboard_screen"}>
       <StatusBar hidden />
       <Header headerText={globalStrings.dashBoard} />
       <ImageBackground
@@ -145,6 +145,7 @@ export const DashboardScreen: FC<DashBoardProps> = () => {
         </View>
         <View style={styles.goBack}>
           <Button
+            testID={"logout_button"}
             onPress={goBack}
             invertColors
             buttonText={globalStrings.goBack}

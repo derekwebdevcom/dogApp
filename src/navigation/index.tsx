@@ -1,20 +1,20 @@
-import * as React from 'react';
-import {createNativeStackNavigator} from '@react-navigation/native-stack';
+import * as React from "react";
+import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import {
   DashboardScreen,
   ProfileScreen,
   UploadScreen,
   WebViewScreen,
   WelcomeScreen,
-} from '../screens';
-import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
-import Ionicons from 'react-native-vector-icons/Ionicons';
-import Feather from 'react-native-vector-icons/Feather';
-import {globalColors, globalEnums} from '../global';
-const options = {headerShown: false};
+} from "../screens";
+import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
+import Ionicons from "react-native-vector-icons/Ionicons";
+import Feather from "react-native-vector-icons/Feather";
+import { globalColors, globalEnums } from "../global";
+const options = { headerShown: false };
 const tabOptions = {
   gestureEnabled: false,
-  animation: 'fade',
+  animation: "fade",
   tabBarShowLabel: false,
   headerShown: false,
   tabBarActiveTintColor: globalColors.tabActiveTint,
@@ -23,10 +23,10 @@ const tabOptions = {
     borderBottomColor: globalColors.tabActiveTint,
     borderBottomWidth: 2,
   },
-  tabBarStyle: {backgroundColor: globalColors.shadowBackGroundPinkDarker},
+  tabBarStyle: { backgroundColor: globalColors.shadowBackGroundPinkDarker },
   tabBarLabelStyle: {
-    textTransform: 'none',
-    textAlign: 'center',
+    textTransform: "none",
+    textAlign: "center",
   },
 };
 
@@ -62,11 +62,12 @@ const TabNavigator = () => {
     <>
       <Tab.Navigator screenOptions={tabOptions as any}>
         <Tab.Screen
-          name={'dashboardTab'}
+          name={"dashboardTab"}
           component={DashboardScreen}
           options={{
-            tabBarIcon: ({color, size}) => (
+            tabBarIcon: ({ color, size }) => (
               <Ionicons
+                testID={"dashboard_screen_button"}
                 name={globalEnums.homeOutline}
                 color={color}
                 size={size}
@@ -75,20 +76,30 @@ const TabNavigator = () => {
           }}
         />
         <Tab.Screen
-          name={'uploadScreen'}
+          name={"uploadScreen"}
           component={UploadScreen}
           options={{
-            tabBarIcon: ({color, size}) => (
-              <Feather name={globalEnums.camera} color={color} size={size} />
+            tabBarIcon: ({ color, size }) => (
+              <Feather
+                testID={"upload_screen_button"}
+                name={globalEnums.camera}
+                color={color}
+                size={size}
+              />
             ),
           }}
         />
         <Tab.Screen
-          name={'profileScreen'}
+          name={"profileScreen"}
           component={ProfileScreen}
           options={{
-            tabBarIcon: ({color, size}) => (
-              <Feather name={globalEnums.user} color={color} size={size} />
+            tabBarIcon: ({ color, size }) => (
+              <Feather
+                testID={"profile_screen_button"}
+                name={globalEnums.user}
+                color={color}
+                size={size}
+              />
             ),
           }}
         />
@@ -102,20 +113,21 @@ export const AuthenticatedStack = () => {
     <Stack.Navigator
       screenOptions={{
         gestureEnabled: false,
-        animation: 'fade',
-      }}>
+        animation: "fade",
+      }}
+    >
       <Stack.Screen
-        name={'welcomeScreen'}
+        name={"welcomeScreen"}
         component={WelcomeScreen}
         options={options}
       />
       <Stack.Screen
-        name={'webViewScreen'}
+        name={"webViewScreen"}
         component={WebViewScreen}
         options={options}
       />
       <Stack.Screen
-        name={'dashboardScreen'}
+        name={"dashboardScreen"}
         component={TabNavigator}
         options={options}
       />

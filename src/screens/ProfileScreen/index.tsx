@@ -57,7 +57,7 @@ export const ProfileScreen: FC = () => {
   };
 
   return (
-    <View style={styles.container}>
+    <View style={styles.container} testID={"profile_screen"}>
       <StatusBar hidden />
       <View style={styles.avatarContainer}>
         <Text style={styles.profileText}>{globalStrings.profile}</Text>

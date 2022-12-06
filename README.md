@@ -1,6 +1,6 @@
 # Dog App
 
-# Dog API App. React Native Mobile Client, Typescript, Custom Hooks, Web View, Camera and Read/Write Storage Permissions. iOs + Android
+# Dog API App. React Native Mobile Client, Typescript, Custom Hooks, Web View, Camera and Read/Write Storage Permissions. Detox Automated E2E Testing/QA, iOs+Android.
 
 <p align="middle">
 <img src="./readmeassets/readme1.png" width="200" height="400">
