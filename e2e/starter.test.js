@@ -4,6 +4,7 @@ describe('DogApp Navigation', () => {
   });
 
   it('permissions have been accepted', async () => {
+    await device.reloadReactNative();
   });
 
   beforeEach(async () => {
