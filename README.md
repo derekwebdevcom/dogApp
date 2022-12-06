@@ -1,7 +1,7 @@
 # Dog App
 
 # Dog API App. React Native Mobile Client, Typescript, Custom Hooks, Web View, Camera and Read/Write Storage Permissions. Detox Automated E2E Testing/QA, iOs+Android.
-<img src="./readmeassets/detox-test.png" width="400" height="200">
+<img src="./readmeassets/detox-test.png" width="600" height="250">
 <p align="middle">
 <img src="./readmeassets/readme1.png" width="200" height="400">
 <img src="./readmeassets/readme2.png" width="200" height="400">
